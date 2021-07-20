@@ -13,7 +13,7 @@
     name: java-1.8.0-openjdk
     state: present
 
-- name: Add tomcat group
+- name: Add Tomcat Group
   group:
     name: tomcat
 
@@ -30,14 +30,14 @@
     url: "{{ tomcat_archive_url }}"
     dest: "{{ tomcat_archive_dest }}"
 
-- name: Create a tomcat directory
+- name: Create a Tomcat Directory
   file:
     path: /usr/share/tomcat
     state: directory
     owner: tomcat
     group: tomcat
 
-- name: Extract tomcat archive
+- name: Extract Tomcat Archive
   unarchive:
     src: "{{ tomcat_archive_dest }}"
     dest: /usr/share/tomcat
@@ -47,13 +47,13 @@
     extra_opts: "--strip-components=1"
     creates: /usr/share/tomcat/bin
 
-- name: Copy tomcat service file
+- name: Copy Tomcat Service file
   template:
     src: templates/tomcat.service.j2
     dest: /etc/systemd/system/tomcat.service
   when: ansible_service_mgr == "systemd"
 
-- name: Start and enable tomcat
+- name: Start and Enable Tomcat
   service:
     daemon_reload: yes
     name: tomcat
@@ -61,14 +61,14 @@
     enabled: yes
   when: ansible_service_mgr == "systemd"
 
-- name: Start and enable firewalld
+- name: Start and enable Firewalld
   service:
     name: firewalld
     state: started
     enabled: yes
   when: ansible_service_mgr == "systemd"
 
-- name: Open tomcat port on the firewall
+- name: Open Tomcat port on the Firewall
   firewalld:
     port: 8080/tcp
     permanent: true
