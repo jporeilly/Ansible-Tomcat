@@ -20,8 +20,8 @@ This role contains tasks to:
 - Clone the Project:
 
 ```
-cd tomcat-ansible
-git clone https://github.com/jporeilly/tomcat-ansible.git .
+cd ansible-projects/demo/roles
+git clone https://github.com/jporeilly/ansible-tomcat.git
 ```
 
 - Update your inventory, e.g:
