@@ -34,15 +34,15 @@
   file:
     path: /usr/share/tomcat
     state: directory
-    owner: ansadmin
-    group: ansadmin
+    owner: tomcat
+    group: tomcat
 
 - name: Extract Tomcat Archive
   unarchive:
     src: "{{ tomcat_archive_dest }}"
     dest: /usr/share/tomcat
-    owner: ansadmin
-    group: ansadmin
+    owner: tomcat
+    group: tomcat
     remote_src: yes
     extra_opts: "--strip-components=1"
     creates: /usr/share/tomcat/bin
