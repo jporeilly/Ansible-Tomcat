@@ -17,9 +17,9 @@
   group:
     name: tomcat
 
-- name: Add "tomcat" user
+- name: Add "ansadmin" user
   user:
-    name: tomcat
+    name: ansadmin
     group: tomcat
     home: /usr/share/tomcat
     createhome: no
@@ -34,14 +34,14 @@
   file:
     path: /usr/share/tomcat
     state: directory
-    owner: tomcat
+    owner: ansadmin
     group: tomcat
 
 - name: Extract Tomcat Archive
   unarchive:
     src: "{{ tomcat_archive_dest }}"
     dest: /usr/share/tomcat
-    owner: tomcat
+    owner: ansadmin
     group: tomcat
     remote_src: yes
     extra_opts: "--strip-components=1"
@@ -56,7 +56,7 @@
 - name: Start and Enable Tomcat
   service:
     daemon_reload: yes
-    name: tomcat
+    name: ansadmin
     state: started
     enabled: yes
   when: ansible_service_mgr == "systemd"
