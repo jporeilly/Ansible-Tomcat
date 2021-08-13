@@ -51,6 +51,8 @@
   template:
     src: templates/tomcat.service.j2
     dest: /etc/systemd/system/tomcat.service
+    owner: tomcat
+    group: tomcat
   when: ansible_service_mgr == "systemd"
 
 - name: Start and Enable Tomcat
