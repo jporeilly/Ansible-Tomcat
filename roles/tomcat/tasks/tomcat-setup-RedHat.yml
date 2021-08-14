@@ -47,6 +47,15 @@
     extra_opts: "--strip-components=1"
     creates: /usr/share/tomcat/bin
 
+- name: Change ownership of Tomcat Directory
+  file:
+    path: /usr/share/tomcat
+    owner: tomcat
+    group: tomcat
+    mode: "u+rwx,g+rx,o=rx"
+    recurse: yes
+    state: directory
+
 - name: Copy Tomcat Service file
   template:
     src: templates/tomcat.service.j2
